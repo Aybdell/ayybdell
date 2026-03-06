@@ -3,10 +3,10 @@ import { useRef, useState } from "react";
 import { Mail, Github, Globe, MapPin, Send, Linkedin } from "lucide-react";
 
 const socialCards = [
-  { icon: Linkedin, label: "LinkedIn", href: "#", bg: "from-blue-600 to-blue-400" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/ayoub-dell-003010337/", bg: "from-blue-600 to-blue-400" },
   { icon: Github, label: "GitHub", href: "https://github.com/DELLAOUIAyoub", bg: "from-gray-600 to-gray-400" },
-  { icon: () => <span className="text-xl font-bold">🏀</span>, label: "Dribbble", href: "#", bg: "from-pink-500 to-orange-400" },
-  { icon: () => <span className="text-xl font-bold text-white">Bē</span>, label: "Behance", href: "#", bg: "from-blue-500 to-cyan-400" },
+  { icon: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" strokeWidth="2"/><circle cx="12" cy="12" r="4" stroke="white" strokeWidth="2"/><circle cx="18" cy="6" r="1" fill="white"/></svg>, label: "Instagram", href: "https://www.instagram.com/ayb.del/", bg: "from-purple-600 to-pink-500" },
+  { icon: () => <span className="text-xl font-bold text-white">f</span>, label: "Facebook", href: "https://web.facebook.com/ayoub.del.2025", bg: "from-blue-600 to-blue-500" },
 ];
 
 const infoCards = [

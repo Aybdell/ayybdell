@@ -72,8 +72,8 @@ const HeroSection = () => {
         >
           {/* Name */}
           <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-6">
-            <span className="text-foreground">Ayuub</span>{" "}
-            <span className="text-gradient-cyan">Dell</span>
+            <span className="text-foreground">Ayoub</span>{" "}
+            <span className="text-gradient-cyan">DELLAOUI</span>
           </h1>
 
           {/* Typing text */}

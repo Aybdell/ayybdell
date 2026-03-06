@@ -19,6 +19,7 @@ const projects: Project[] = [
     description: "Full-stack ophthalmology consultation management system. Appointment scheduling, patient data, consultation tracking.",
     code: "const appointment = async () => { ... }",
     stack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+    link: "https://github.com/Aybdell",
   },
   {
     title: "PERT & GANTT Diagrams",
@@ -26,6 +27,7 @@ const projects: Project[] = [
     description: "Web-based project management tool with interactive diagrams and task scheduling.",
     code: "const gantt = new Chart(ctx, { ... })",
     stack: ["React", "JavaScript", "CSS3"],
+    link: "https://github.com/Aybdell",
   },
   {
     title: "My Portfolio",
@@ -40,12 +42,14 @@ const projects: Project[] = [
     description: "Task management app with REST API backend and CRUD operations.",
     code: "app.post('/tasks', auth, handler)",
     stack: ["Express.js", "Node.js", "MongoDB"],
+    link: "https://github.com/Aybdell",
   },
   {
     title: "University System",
     category: "Web App",
     description: "University management mini-project with student and course management.",
     stack: ["PHP", "HTML", "CSS", "MySQL"],
+    link: "https://github.com/Aybdell",
   },
 ];
 
