@@ -1,0 +1,81 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#00d4ff" />
+      <stop offset="25%" stopColor="#0099ff" />
+      <stop offset="50%" stopColor="#7b2ff7" />
+      <stop offset="75%" stopColor="#00ffff" />
+      <stop offset="100%" stopColor="#00d4ff" />
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="innerGlow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Dark background with subtle gradient -->
+  <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
+  
+  <!-- Outer hexagonal frame -->
+  <path
+    d="M 16 4 L 26 10 L 26 22 L 16 28 L 6 22 L 6 10 Z"
+    fill="none"
+    stroke="url(#neonGradient)"
+    strokeWidth="1.5"
+    opacity="0.8"
+    filter="url(#glow)"
+  />
+  
+  <!-- Inner geometric lines -->
+  <path
+    d="M 16 8 L 22 12 L 22 20 L 16 24 L 10 20 L 10 12 Z"
+    fill="none"
+    stroke="url(#neonGradient)"
+    strokeWidth="0.5"
+    opacity="0.4"
+  />
+  
+  <!-- AD Monogram - Futuristic geometric design -->
+  <g filter="url(#innerGlow)">
+    <!-- Letter A - Geometric style -->
+    <path
+      d="M 11 19 L 11 13 L 14 16 L 14 13 M 12.5 16 L 15.5 16"
+      stroke="url(#neonGradient)"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+    />
+    
+    <!-- Letter D - Geometric style -->
+    <path
+      d="M 18 13 L 18 19 L 20.5 19 C 22.5 19 24 18 24 16 C 24 14 22.5 13 20.5 13 Z"
+      stroke="url(#neonGradient)"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+    />
+  </g>
+  
+  <!-- Tech corner dots -->
+  <circle cx="10" cy="12" r="1" fill="url(#neonGradient)" opacity="0.9" filter="url(#innerGlow)" />
+  <circle cx="22" cy="12" r="1" fill="url(#neonGradient)" opacity="0.9" filter="url(#innerGlow)" />
+  <circle cx="10" cy="20" r="1" fill="url(#neonGradient)" opacity="0.9" filter="url(#innerGlow)" />
+  <circle cx="22" cy="20" r="1" fill="url(#neonGradient)" opacity="0.9" filter="url(#innerGlow)" />
+  
+  <!-- Center accent point -->
+  <circle cx="16" cy="16" r="1.5" fill="url(#neonGradient)" opacity="0.7" filter="url(#glow)" />
+</svg>
