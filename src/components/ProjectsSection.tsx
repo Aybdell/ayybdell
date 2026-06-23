@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 type Project = {
   title: string;
@@ -9,10 +9,29 @@ type Project = {
   code?: string;
   stack: string[];
   link?: string;
+  liveUrl?: string;
+  github?: string;
   image?: string;
+  featured?: boolean;
 };
 
 const projects: Project[] = [
+  {
+    title: "FreelanceCRM",
+    category: "SaaS",
+    description: "A CRM platform that helps freelancers manage clients, projects, invoices, and business operations from a unified dashboard.",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Supabase", "Vercel"],
+    liveUrl: "https://freelancer-cr.vercel.app/",
+    featured: true,
+  },
+  {
+    title: "Study Point",
+    category: "Education / Hackathon",
+    description: "An educational platform developed during a 24-hour hackathon to help students access learning resources and organize their studies.",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    liveUrl: "https://study-point-by-breakfast.vercel.app/",
+    featured: true,
+  },
   {
     title: "EL-KARANIA",
     category: "Web App",
@@ -35,6 +54,7 @@ const projects: Project[] = [
     description: "Modern responsive developer portfolio with animations and immersive design.",
     stack: ["React", "Next.js", "Tailwind", "Framer Motion", "Vercel"],
     link: "https://ayoubdell.vercel.app/",
+    liveUrl: "https://ayoubdell.vercel.app/",
   },
   {
     title: "To-Do App",
@@ -53,7 +73,7 @@ const projects: Project[] = [
   },
 ];
 
-const filters = ["All", "Web App", "Mobile", "UI/UX", "Full-Stack"];
+const filters = ["All", "SaaS", "Education / Hackathon", "Web App", "Mobile", "UI/UX", "Full-Stack"];
 
 const ProjectsSection = () => {
   const ref = useRef(null);
@@ -104,6 +124,7 @@ const ProjectsSection = () => {
               key={project.title}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="glass rounded-2xl overflow-hidden hover-glow-cyan group"
             >
@@ -113,6 +134,11 @@ const ProjectsSection = () => {
                   {project.category}
                 </span>
 
+                {project.featured && (
+                  <span className="inline-block px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-mono mb-3">
+                    ★ Featured
+                  </span>
+                )}
                 <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-accent transition-colors">
                   {project.title}
                 </h3>
@@ -133,15 +159,39 @@ const ProjectsSection = () => {
                   ))}
                 </div>
 
-                <a
-                  href={project.link || "#"}
-                  target={project.link ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-primary-foreground transition-all hover:shadow-lg hover:shadow-primary/25"
-                  style={{ background: "linear-gradient(135deg, hsl(175 100% 41%), hsl(25 95% 53%))" }}
-                >
-                  View Project <ExternalLink size={14} />
-                </a>
+                <div className="flex flex-wrap gap-3">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-primary-foreground transition-all hover:shadow-lg hover:shadow-primary/25"
+                      style={{ background: "linear-gradient(135deg, hsl(175 100% 41%), hsl(25 95% 53%))" }}
+                    >
+                      Live Demo <ExternalLink size={14} />
+                    </a>
+                  )}
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold glass transition-all hover:shadow-lg hover:shadow-primary/25 hover:bg-primary/10"
+                    >
+                      View Project <ExternalLink size={14} />
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold glass transition-all hover:shadow-lg hover:shadow-primary/25 hover:bg-primary/10"
+                    >
+                      <Github size={14} /> View Code
+                    </a>
+                  )}
+                </div>
               </div>
             </motion.div>
           ))}
