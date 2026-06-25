@@ -80,6 +80,14 @@ const AboutSection = () => {
               <span className="text-accent font-semibold">Framer Motion</span>.
             </p>
 
+            <p className="text-muted-foreground leading-relaxed">
+              Currently building AI-powered SaaS applications and developer tools using{" "}
+              <span className="text-accent font-semibold">Next.js</span>,{" "}
+              <span className="text-primary font-semibold">TypeScript</span>,{" "}
+              <span className="text-primary font-semibold">Supabase</span>, and{" "}
+              <span className="text-accent font-semibold">OpenRouter</span>.
+            </p>
+
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-4">
               {stats.map((stat) => (
