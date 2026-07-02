@@ -10,6 +10,15 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const ADLogo = ({ size = 32 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 26L15 4" stroke="#00D1B2" strokeWidth="3.5" strokeLinecap="round" />
+    <path d="M8 19H17" stroke="#00D1B2" strokeWidth="3" strokeLinecap="round" />
+    <path d="M15 4L15 26" stroke="#00D1B2" strokeWidth="3.5" strokeLinecap="round" />
+    <path d="M15 4C25 4 29 10 29 15C29 20 25 26 15 26" stroke="#00D1B2" strokeWidth="3.5" strokeLinecap="round" />
+  </svg>
+);
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -25,20 +34,24 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -80 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-strong shadow-lg" : "bg-transparent"
+        scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border/40 shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
+        {/* Mobile left: Hamburger */}
+        <button
+          onClick={() => setMobileOpen(true)}
+          className="md:hidden text-foreground p-2 -ml-2"
+          aria-label="Open menu"
+        >
+          <Menu size={22} />
+        </button>
+
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full bg-gradient-cyan flex items-center justify-center text-primary-foreground font-bold text-sm border-2 border-primary/30">
-            <span className="text-xs">⚛</span>
-          </div>
-          <span className="text-primary font-bold text-lg tracking-tight">
-            Ayuub Dell
-          </span>
+        <a href="#" className="flex-shrink-0">
+          <ADLogo size={32} />
         </a>
 
         {/* Desktop Nav */}
@@ -47,7 +60,7 @@ const Navbar = () => {
             <a
               key={link.label}
               href={link.href}
-              className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors font-medium"
             >
               {link.label}
             </a>
@@ -55,51 +68,60 @@ const Navbar = () => {
         </div>
 
         {/* Theme toggle */}
-        <div className="hidden md:flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-accent" />
-          <div
+        <div className="flex items-center">
+          <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="w-10 h-10 rounded-full glass flex items-center justify-center cursor-pointer hover-glow-cyan"
+            className="w-9 h-9 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-all"
+            aria-label="Toggle theme"
           >
-            {theme === "dark" ? (
-              <Sun size={18} className="text-primary" />
-            ) : (
-              <Moon size={18} className="text-primary" />
-            )}
-          </div>
+            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
         </div>
-
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-foreground p-2"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Sidebar */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-strong"
-          >
-            <div className="px-6 py-4 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/40 z-40 md:hidden"
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.div
+              initial={{ x: -300 }}
+              animate={{ x: 0 }}
+              exit={{ x: -300 }}
+              transition={{ type: "spring", damping: 30, stiffness: 260 }}
+              className="fixed left-0 top-0 bottom-0 w-64 z-50 bg-background border-r border-border md:hidden"
+            >
+              <div className="flex items-center justify-between px-6 py-5 border-b border-border">
+                <ADLogo size={28} />
+                <button
                   onClick={() => setMobileOpen(false)}
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium"
+                  className="text-muted-foreground p-1 -mr-1"
+                  aria-label="Close menu"
                 >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </motion.div>
+                  <X size={20} />
+                </button>
+              </div>
+              <div className="px-6 py-6 flex flex-col gap-1">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="py-2.5 text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.nav>
