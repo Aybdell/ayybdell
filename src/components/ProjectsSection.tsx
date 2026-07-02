@@ -163,9 +163,7 @@ const ProjectsSection = () => {
                   {/* Badges */}
                   <div className="flex flex-wrap gap-2 mb-3">
                     {project.featured && (
-                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-mono">
-                        ★ Featured Project
-                      </span>
+                      <span className="text-amber-400 text-sm">★</span>
                     )}
                   </div>
 
