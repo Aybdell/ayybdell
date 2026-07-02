@@ -1,6 +1,9 @@
+"use client";
+
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Github, Globe, MapPin, Send, Linkedin } from "lucide-react";
+import { Mail, Github, Globe, MapPin, Send, Linkedin, CheckCircle, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const socialCards = [
   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/ayoub-dell-003010337/", bg: "from-blue-600 to-blue-400" },
@@ -14,10 +17,54 @@ const infoCards = [
   { icon: MapPin, label: "LOCATION", value: "Algeria", href: undefined },
 ];
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_MESSAGE_LENGTH = 500;
+
 const ContactSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const validate = () => {
+    if (!form.name.trim()) return "Name is required.";
+    if (!form.email.trim()) return "Email is required.";
+    if (!EMAIL_REGEX.test(form.email)) return "Please enter a valid email.";
+    if (!form.message.trim()) return "Message is required.";
+    if (form.message.length > MAX_MESSAGE_LENGTH) return `Message must be under ${MAX_MESSAGE_LENGTH} characters.`;
+    return "";
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setSuccess(false);
+
+    const validationError = validate();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        e.currentTarget as HTMLFormElement,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+      setSuccess(true);
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setError("Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section id="contact" className="relative py-24 overflow-hidden">
@@ -101,11 +148,24 @@ const ContactSection = () => {
               <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-primary/40 rounded-bl-2xl" />
               <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-accent/40 rounded-br-2xl" />
 
-              <form className="space-y-5 relative z-10" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-5 relative z-10" onSubmit={handleSubmit}>
+                {success && (
+                  <div className="flex items-center gap-2 text-sm text-green-400 bg-green-400/10 px-4 py-3 rounded-xl">
+                    <CheckCircle size={16} />
+                    Message sent successfully!
+                  </div>
+                )}
+                {error && (
+                  <div className="flex items-center gap-2 text-sm text-red-400 bg-red-400/10 px-4 py-3 rounded-xl">
+                    <AlertCircle size={16} />
+                    {error}
+                  </div>
+                )}
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Name</label>
                   <input
                     type="text"
+                    name="from_name"
                     placeholder="Your name"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -116,6 +176,7 @@ const ContactSection = () => {
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Email</label>
                   <input
                     type="email"
+                    name="from_email"
                     placeholder="your.email@example.com"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -125,21 +186,23 @@ const ContactSection = () => {
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Message</label>
                   <textarea
+                    name="message"
                     placeholder="Tell me about your project..."
                     rows={4}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
                   />
-                  <p className="text-xs text-muted-foreground mt-1">{form.message.length}/500 characters</p>
+                  <p className="text-xs text-muted-foreground mt-1">{form.message.length}/{MAX_MESSAGE_LENGTH} characters</p>
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2 text-primary-foreground transition-shadow hover:shadow-lg hover:shadow-primary/25"
+                  disabled={loading}
+                  className="w-full py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2 text-primary-foreground transition-shadow hover:shadow-lg hover:shadow-primary/25 disabled:opacity-60 disabled:cursor-not-allowed"
                   style={{ background: "linear-gradient(135deg, hsl(175 100% 41%), hsl(25 95% 53%))" }}
                 >
-                  Send Message
-                  <Send size={16} />
+                  {loading ? "Sending..." : "Send Message"}
+                  {loading ? null : <Send size={16} />}
                 </button>
               </form>
             </div>

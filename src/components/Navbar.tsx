@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "next-themes";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -12,6 +13,7 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -52,11 +54,18 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Dark mode toggle placeholder */}
+        {/* Theme toggle */}
         <div className="hidden md:flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-accent" />
-          <div className="w-10 h-10 rounded-full glass flex items-center justify-center cursor-pointer hover-glow-cyan">
-            <span className="text-primary text-lg">🌙</span>
+          <div
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="w-10 h-10 rounded-full glass flex items-center justify-center cursor-pointer hover-glow-cyan"
+          >
+            {theme === "dark" ? (
+              <Sun size={18} className="text-primary" />
+            ) : (
+              <Moon size={18} className="text-primary" />
+            )}
           </div>
         </div>
 
