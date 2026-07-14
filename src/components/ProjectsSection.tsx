@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Github, ArrowUpRight, Sparkles } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 type Project = {
   title: string;
@@ -13,11 +13,8 @@ type Project = {
   github?: string;
   image?: string;
   featured?: boolean;
-  caseStudy?: boolean;
-  features?: string[];
   achievement?: string;
   achievements?: string[];
-  gradient?: string;
 };
 
 const projects: Project[] = [
@@ -29,16 +26,6 @@ const projects: Project[] = [
     stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://greenhouse-gold.vercel.app/",
     featured: true,
-    caseStudy: true,
-    gradient: "from-emerald-500/20 via-teal-500/10 to-cyan-500/20",
-    features: [
-      "Responsive on all devices",
-      "Premium UI inspired by nature",
-      "Fast loading performance",
-      "Modern booking-focused experience",
-      "Clean architecture",
-      "Optimized Lighthouse score",
-    ],
     achievements: [
       "Nature-Inspired Design",
       "Booking UX Optimization",
@@ -54,16 +41,6 @@ const projects: Project[] = [
     stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://tigon-87.vercel.app/",
     featured: true,
-    caseStudy: true,
-    gradient: "from-amber-500/20 via-orange-500/10 to-rose-500/20",
-    features: [
-      "Boutique-inspired visual identity",
-      "Fully responsive layout",
-      "High-performance architecture",
-      "Smooth micro-interactions",
-      "Modern user experience",
-      "Optimized Lighthouse score",
-    ],
     achievements: [
       "Boutique Visual Identity",
       "Storytelling Experience",
@@ -193,174 +170,9 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        {/* Case Studies */}
-        {filtered.some((p) => p.caseStudy) && (
-          <div className="mb-12 space-y-8">
-            {filtered
-              .filter((p) => p.caseStudy)
-              .map((project, i) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  whileHover={{ y: -4, transition: { duration: 0.3, ease: "easeOut" } }}
-                  transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
-                  className="glass rounded-2xl overflow-hidden hover-glow-cyan group"
-                >
-                  <div className="grid lg:grid-cols-2 gap-0">
-                    {/* Browser Mockup Preview */}
-                    <div className="relative overflow-hidden">
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-br ${
-                          project.gradient || "from-primary/20 via-transparent to-accent/20"
-                        }`}
-                      />
-                      <div className="relative p-6 pb-0">
-                        {/* Browser frame */}
-                        <div className="rounded-t-xl overflow-hidden border border-border/40 bg-card/80 backdrop-blur-sm shadow-2xl shadow-black/20">
-                          {/* Browser chrome */}
-                          <div className="flex items-center gap-2 px-4 py-2.5 bg-secondary/60 border-b border-border/30">
-                            <div className="flex gap-1.5">
-                              <div className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
-                              <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/70" />
-                              <div className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
-                            </div>
-                            <div className="flex-1 mx-2">
-                              <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-background/50 border border-border/30">
-                                <svg
-                                  className="w-3 h-3 text-muted-foreground/50"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  strokeWidth={2}
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                                  />
-                                </svg>
-                                <span className="text-xs font-mono text-muted-foreground/60 truncate">
-                                  {project.liveUrl?.replace("https://", "")}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          {/* Page preview */}
-                          <div className="relative h-48 sm:h-56 lg:h-64 bg-gradient-to-br from-background via-secondary/30 to-background overflow-hidden">
-                            <div className="absolute inset-0 bg-grid-subtle opacity-30" />
-                            {/* Simulated page content */}
-                            <div className="absolute inset-0 p-6 flex flex-col">
-                              <div className="w-20 h-3 rounded bg-primary/30 mb-4" />
-                              <div className="w-3/4 h-2 rounded bg-foreground/10 mb-2" />
-                              <div className="w-1/2 h-2 rounded bg-foreground/10 mb-6" />
-                              <div className="grid grid-cols-3 gap-3 flex-1">
-                                <div className="rounded-lg bg-primary/10 border border-primary/10" />
-                                <div className="rounded-lg bg-accent/10 border border-accent/10" />
-                                <div className="rounded-lg bg-primary/10 border border-primary/10" />
-                              </div>
-                              <div className="flex gap-2 mt-4">
-                                <div className="px-4 py-1.5 rounded-full bg-primary/20 h-6 w-24" />
-                                <div className="px-4 py-1.5 rounded-full bg-foreground/10 h-6 w-20" />
-                              </div>
-                            </div>
-                            {/* Gradient overlay on hover */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                          </div>
-                        </div>
-                      </div>
-                      {/* Floating preview indicator */}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-primary/90 text-primary-foreground backdrop-blur-sm shadow-lg shadow-primary/25 hover:bg-primary transition-colors"
-                        >
-                          View Live <ArrowUpRight size={12} />
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="relative p-6 lg:p-8 flex flex-col justify-center">
-                      {/* Category */}
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="px-3 py-1 rounded-full bg-primary/15 text-primary text-xs font-mono border border-primary/20">
-                          {project.category}
-                        </span>
-                        <span className="text-amber-400">
-                          <Sparkles size={14} />
-                        </span>
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                        {project.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-5">
-                        {project.description}
-                      </p>
-
-                      {/* Features grid */}
-                      {project.features && (
-                        <div className="grid grid-cols-2 gap-2 mb-5">
-                          {project.features.map((f) => (
-                            <div
-                              key={f}
-                              className="flex items-center gap-2 text-xs text-muted-foreground"
-                            >
-                              <div className="w-1 h-1 rounded-full bg-primary shrink-0" />
-                              <span>{f}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Stack */}
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.stack.map((s) => (
-                          <span
-                            key={s}
-                            className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono transition-all duration-200 hover:bg-primary/20 hover:scale-105"
-                          >
-                            {s}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* CTA */}
-                      <div className="flex flex-wrap gap-3" onClick={(e) => e.stopPropagation()}>
-                        {project.liveUrl && (
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold text-primary-foreground transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
-                            style={{
-                              background:
-                                "linear-gradient(135deg, hsl(175 100% 41%), hsl(25 95% 53%))",
-                            }}
-                          >
-                            Live Demo <ExternalLink size={14} />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-          </div>
-        )}
-
-        {/* Regular Grid */}
+        {/* Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {filtered
-            .filter((p) => !p.caseStudy)
-            .map((project, i) => {
+          {filtered.map((project, i) => {
               const isExpanded = expandedProject === project.title;
               return (
                 <motion.div
