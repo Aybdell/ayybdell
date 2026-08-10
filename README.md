@@ -1,269 +1,103 @@
-# 👋 Ayoub Dell — Frontend Developer
+# Ayoub Dellaoui — Frontend Developer
 
-<div align="center">
+> Building fast, modern, and production-ready web applications with React & Next.js.
 
-### Building Modern Web Applications with React, Next.js & TypeScript
-
-🌐 Live Portfolio: https://ayybdell.vercel.app
+🔗 **Live Portfolio:** [ayybdell.vercel.app](https://ayybdell.vercel.app)
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-Live-blue?style=for-the-badge)](https://ayybdell.vercel.app)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/ayoub-dell-003010337)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/ayoub-dellaoui-003010337)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github)](https://github.com/Aybdell)
 
-</div>
+---
+
+## About
+
+Frontend Developer specializing in React.js and Next.js, building real products from scratch — from AI-powered SaaS platforms to clinical management systems.
+
+Currently pursuing a Master's degree in Computer Science while building and shipping real-world projects.
 
 ---
 
-# 📖 About
+## Tech Stack
 
-This portfolio showcases my projects, technical skills, and academic journey as a Frontend Developer.
+**Frontend:** React 18, Next.js, TypeScript, Tailwind CSS, shadcn/ui, Framer Motion
 
-The website is designed with a modern UI, smooth animations, responsive layouts, and an interactive user experience to highlight my work and achievements.
+**Backend:** Node.js, Express.js, tRPC, REST APIs, JWT Auth
 
-Currently, I am pursuing a Master's degree while continuously building real-world projects and improving my software engineering skills.
+**Database:** PostgreSQL, Supabase, Prisma, MongoDB
 
----
-
-# 🚀 Live Demo
-
-🔗 **Portfolio Website**
-
-https://ayybdell.vercel.app
+**DevOps:** Git, GitHub Actions, Vercel, Netlify
 
 ---
 
-# ✨ Features
+## Featured Projects
 
-- Modern and responsive design
-- Interactive user experience
-- Smooth scrolling animations
-- Dynamic project showcase
-- Technical skills section
-- Education timeline
-- Contact form
-- Social media integration
-- Mobile-friendly layout
-- Performance optimized
+### 🏆 Freelancer CRM — Full-Stack SaaS
+A complete client and project management platform for freelancers.
+- **Stack:** Next.js 14, TypeScript, Supabase, Prisma, tRPC, Tailwind CSS
+- **Live:** [freelancer-cr.vercel.app](https://freelancer-cr.vercel.app)
+- **Repo:** [github.com/Aybdell/freelancer-CR](https://github.com/Aybdell/freelancer-CR)
 
 ---
 
-# 🛠️ Tech Stack
-
-## Frontend
-
-- React 18
-- TypeScript
-- Vite
-- Tailwind CSS
-- shadcn/ui
-
-## Animations
-
-- Framer Motion
-
-## Deployment
-
-- Vercel
-
-## Development Tools
-
-- Git
-- GitHub
-- VS Code
+### 🤖 Dev AI — AI Code Review SaaS
+Production-ready SaaS with real-time AI code review using OpenAI GPT-4o.
+- **Stack:** Next.js 15, TypeScript, Supabase, OpenAI API, Monaco Editor
+- **Live:** [dev-ai99.vercel.app](https://dev-ai99.vercel.app)
 
 ---
 
-# 📂 Featured Projects
-
-## FreelanceCRM
-
-A SaaS CRM platform designed for freelancers to manage clients, projects, invoices, and business operations in one place.
-
-**Tech Stack**
-
-- Next.js
-- TypeScript
-- Supabase
-- Tailwind CSS
+### 🥇 AI Learning Platform — Hackathon 1st Place
+AI platform where students upload PDFs to auto-generate summaries, quizzes and exams.
+- **Stack:** React, TypeScript, Tailwind CSS, LLM APIs
+- **Live:** [study-point-by-breakfast.vercel.app](https://study-point-by-breakfast.vercel.app)
 
 ---
 
-## Study Point
-
-Hackathon project built within 24 hours by a team of 5 developers.
-
-**My Role**
-
-- Frontend Development
-- UI Implementation
-- API Integration
-
-**Tech Stack**
-
-- React
-- TypeScript
-- Tailwind CSS
+### 🏥 EL-KARANIA — Ophthalmology Management System
+Full-stack web app for managing ophthalmology clinic consultations.
+- **Stack:** React, Node.js, Express.js, MongoDB, JWT Auth
 
 ---
 
-## EL-KARANIA
-
-A medical consultation management platform for ophthalmology clinics.
-
-**Tech Stack**
-
-- React
-- Node.js
-- Express.js
-- MongoDB
-- JWT Authentication
-
----
-
-## University Management System
-
-Web application for managing students, courses, and academic operations.
-
-**Tech Stack**
-
-- PHP
-- MySQL
-- HTML
-- CSS
-
----
-
-# 📸 Screenshots
-
-Add screenshots of your portfolio here.
-
-```text
-screenshots/
-├── home.png
-├── projects.png
-├── skills.png
-└── contact.png
-```
-
-Example:
-
-```md
-![Home](./screenshots/home.png)
-```
-
----
-
-# ⚙️ Installation
-
-Clone the repository:
+## Getting Started
 
 ```bash
-git clone https://github.com/Aybdell/portfolio.git
-```
+# Clone the repo
+git clone https://github.com/Aybdell/ayybdell.git
+cd ayybdell
 
-Navigate to the project:
-
-```bash
-cd portfolio
-```
-
-Install dependencies:
-
-```bash
+# Install dependencies
 npm install
-```
 
-Run development server:
-
-```bash
+# Run development server
 npm run dev
 ```
 
 ---
 
-# 🏗️ Build For Production
+## Education
 
-```bash
-npm run build
-```
-
-Preview production build:
-
-```bash
-npm run preview
-```
+- 🎓 **Master's Degree** — Computer Science, Hassiba Benbouali University (2025–2026)
+- 🎓 **Bachelor's Degree** — Information Systems, Hassiba Benbouali University (2024–2025)
 
 ---
 
-# 📜 Available Scripts
+## Languages
 
-| Command | Description |
-|----------|-------------|
-| npm run dev | Start development server |
-| npm run build | Build project for production |
-| npm run preview | Preview production build |
-| npm run lint | Run ESLint |
+- Arabic — Native
+- English — B2
+- French — B1
 
 ---
 
-# 🎓 Education
+## Contact
 
-### Master Degree (Currently Pursuing)
-
-Computer Science
-
-### Bachelor's Degree
-
-Computer Science Graduate
+- 📧 Email: ayoub40dell@gmail.com
+- 💼 LinkedIn: [linkedin.com/in/ayoub-dellaoui-003010337](https://linkedin.com/in/ayoub-dellaoui-003010337)
+- 🌐 Portfolio: [ayybdell.vercel.app](https://ayybdell.vercel.app)
+- 💻 GitHub: [github.com/Aybdell](https://github.com/Aybdell)
 
 ---
 
-# 🌍 Languages
-
-- 🇬🇧 English
-- 🇫🇷 French
-- 🇦🇪 Arabic (Native)
-
----
-
-# 📫 Contact
-
-### Email
-
-ayoub40dell@gmail.com
-
-### LinkedIn
-
-https://linkedin.com/in/ayoub-dell-003010337
-
-### GitHub
-
-https://github.com/Aybdell
-
-### Portfolio
-
-https://ayybdell.vercel.app
-
----
-
-# 🤝 Let's Connect
-
-I'm always interested in:
-
-- Frontend Development opportunities
-- React / Next.js projects
-- Startup environments
-- Freelance collaborations
-- AI-powered applications
-
-Feel free to reach out!
-
----
-
-<div align="center">
-
-### ⭐ If you like this project, consider giving it a star!
-
-Made with ❤️ by Ayoub Dell
-
-</div>
+Open to remote Frontend Developer roles and freelance projects. Feel free to reach out!
